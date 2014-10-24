@@ -7,6 +7,14 @@ NavigationMenu &amp; Popover
 support Xcode 6, ios 7.0+
 
 test in: ios 7.0.3, ios 7.1, ios 8.0
+support costom pop viewcontroller
+
+英文书写能力一般, 所以用中文描述一下:
+1. 开发环境为Xcode6  这个组件支持ios7以上版本
+2. 经过多次修改和测试, 版本定义为1.0.0
+3. 本组件库暂时不支持cocoapods
+4. 组件中提供了一个gridmenu的基类, 直接继承可以实现范例图片中效果, 图标尺寸写死了39*39, 但是同时也支持自定义任何形式的UIViewController.
+5. 本组件源码使用apache2开源协议, 图片资源不包括在列, 所以禁止在任何商业与非商业程序中使用. 
 
 
 
@@ -163,7 +171,6 @@ test in: ios 7.0.3, ios 7.1, ios 8.0
 
 @end
 ```
-
 
 
 
