@@ -3,12 +3,12 @@ KHNavigationMenu
 
 NavigationMenu &amp; Popover
 
-#version 1.0.0
+#Version 1.0.0
 support Xcode 6, ios 7.0+
 
-test in: ios 7.0.3, ios 7.1, ios 8.0
+Test in: iOS 7.0.3, iOS 7.1, iOS 8.0
 
-support costom pop viewcontroller
+Support costom pop viewcontroller
 
 
 英文书写能力一般, 所以用中文描述一下:
