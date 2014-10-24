@@ -22,6 +22,8 @@ support costom pop viewcontroller
 
 5. 本组件源码使用apache2开源协议, 图片资源不包括在列, 所以禁止在任何商业与非商业程序中使用. 
 
+6. 谢谢 sign, 萨格拉斯 码农 小蔡在开发过程中给予的帮助
+
 
 
 #demo pic
