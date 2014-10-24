@@ -4,6 +4,8 @@ KHNavigationMenu
 NavigationMenu &amp; Popover
 
 #version 1.0.0
+support Xcode 6, ios 7.0+
+test in: ios 7.0.3, ios 7.1, ios 8.0
 
 #demo pic
 ![file-list](https://github.com/khan-lau/KHNavigationMenu/blob/master/resource/demo.gif)
