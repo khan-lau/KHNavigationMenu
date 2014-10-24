@@ -7,8 +7,8 @@ NavigationMenu &amp; Popover
 ![file-list](https://github.com/khan-lau/KHNavigationMenu/blob/master/resource/demo.gif)
 
 
-example:
-#step 1 - define menulist
+#example:
+##step 1 - define menulist
 
 
 ```objc
@@ -102,10 +102,12 @@ example:
 @end
 ```
 
-#step 2 - setup navigation menubar
+##step 2 - setup navigation menubar
 
-##ViewController.m
+
 ```objc
+//ViewController.m
+
 #import "ViewController.h"
 #import "RWBlurPopover.h"
 #import "NavigationMenuView.h"
