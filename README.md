@@ -3,10 +3,27 @@ KHNavigationMenu
 
 NavigationMenu &amp; Popover
 
+#demo pic
+![file-list](https://github.com/khan-lau/KHNavigationMenu/blob/master/resource/demo.gif)
+
 
 example:
 #step 1 - define menulist
+
+
 ```objc
+// DemoPopGridMenuVcl.h
+#import "GridMenuVcl.h"
+
+@interface DemoPopGridMenuVcl : GridMenuVcl
+
+@end
+
+
+///////////////////////////////////
+
+// DemoPopGridMenuVcl.m
+
 #import "DemoPopGridMenuVcl.h"
 #import "StructMenuItem.h"
 
@@ -86,8 +103,8 @@ example:
 ```
 
 #step 2 - setup navigation menubar
-in ViewController.m
 
+##ViewController.m
 ```objc
 #import "ViewController.h"
 #import "RWBlurPopover.h"
