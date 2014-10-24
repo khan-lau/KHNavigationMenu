@@ -35,7 +35,7 @@ NavigationMenu &amp; Popover
 
 
 - (void)viewDidLoad {
-//    init parent Class
+//    init parent class member object
     self.delegate = self;
     self.offsetY = 40;
     
