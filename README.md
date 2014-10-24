@@ -7,7 +7,9 @@ NavigationMenu &amp; Popover
 support Xcode 6, ios 7.0+
 
 test in: ios 7.0.3, ios 7.1, ios 8.0
+
 support costom pop viewcontroller
+
 
 英文书写能力一般, 所以用中文描述一下:
 1. 开发环境为Xcode6  这个组件支持ios7以上版本
