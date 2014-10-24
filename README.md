@@ -3,6 +3,8 @@ KHNavigationMenu
 
 NavigationMenu &amp; Popover
 
+#version 1.0.0
+
 #demo pic
 ![file-list](https://github.com/khan-lau/KHNavigationMenu/blob/master/resource/demo.gif)
 
