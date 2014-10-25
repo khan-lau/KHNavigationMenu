@@ -83,11 +83,13 @@ static void swizzleMethod(Class class, SEL originSelector, SEL swizzledSelector)
     
     self.popoverView = [[RWBlurPopoverView alloc] initWithContentView:self.contentViewController.view contentSize:[self.contentViewController preferredContentSize]];
     self.popoverView.offsetY = 0.0f;
-    if ([UIApplication sharedApplication].statusBarHidden == NO) {
-        self.popoverView.offsetY += 20.0f;
-    }
-    if (self.presentingViewController.navigationController != nil) {
-        self.popoverView.offsetY += 45.0f;
+    if (self.presentingViewController != nil && self.presentingViewController.edgesForExtendedLayout != UIRectEdgeNone) {
+        if ([UIApplication sharedApplication].statusBarHidden == NO) {
+            self.popoverView.offsetY += 20.0f;
+        }
+        if (self.presentingViewController.navigationController != nil) {
+            self.popoverView.offsetY += 45.0f;
+        }
     }
     
     if ( YES == self.isTransparent ) {
