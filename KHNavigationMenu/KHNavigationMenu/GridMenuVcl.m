@@ -35,23 +35,21 @@
     return self;
 }
 
-- (void) drawSelectedView {
-    if (_selectedView == nil) {
-        _selectedView = [[UIView alloc] initWithFrame:CGRectZero];
-        UIImageView * img = [[UIImageView alloc] initWithFrame:self.icon.frame];
-//        img.image =  [self image:self.icon.image WithTintColor:[UIColor colorWithRed:150.0f/255 green:150.0f/255 blue:150.0f/255 alpha:1.0f]];
-        img.image =  [self image:self.icon.image WithTintColor:[UIColor blueColor]];
-        [_selectedView addSubview:img];
-        
-        [_selectedView setBackgroundColor:[UIColor clearColor]];
-        [_selectedView.layer setMasksToBounds:YES];
-        [_selectedView.layer setCornerRadius:3.0];
-        [_selectedView.layer setBorderColor:[[UIColor colorWithRed:217.0f/255 green:217.0f/255 blue:217.0f/255 alpha:1.0f] CGColor]];//边框颜色
-    }
-    self.selectedBackgroundView = _selectedView;
+
+- (void) setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    [self formatText:selected];
+}
+
+- (void) setHighlighted:(BOOL)highlighted {
+    [super setHighlighted:highlighted];
+    [self formatText:highlighted];
 }
 
 
+
+
+#pragma mark -- private
 
 - (void) initView {
     self.icon = [[UIImageView alloc] initWithFrame:CGRectMake((self.contentView.frame.size.width - 39)/2, 5, 39, 39)];
@@ -66,6 +64,44 @@
 }
 
 
+
+
+- (void) drawSelectedView {
+    if (_selectedView == nil) {
+        _selectedView = [[UIView alloc] initWithFrame:CGRectZero];
+        UIImageView * img = [[UIImageView alloc] initWithFrame:self.icon.frame];
+        //        img.image =  [self image:self.icon.image WithTintColor:[UIColor colorWithRed:150.0f/255 green:150.0f/255 blue:150.0f/255 alpha:1.0f]];
+        img.image =  [self image:self.icon.image WithTintColor:[UIColor blueColor]];
+        [_selectedView addSubview:img];
+        
+        [_selectedView setBackgroundColor:[UIColor clearColor]];
+        [_selectedView.layer setMasksToBounds:YES];
+        [_selectedView.layer setCornerRadius:3.0];
+        [_selectedView.layer setBorderColor:[[UIColor colorWithRed:217.0f/255 green:217.0f/255 blue:217.0f/255 alpha:1.0f] CGColor]];//边框颜色
+    }
+    self.selectedBackgroundView = _selectedView;
+}
+
+
+
+- (void) formatText:(BOOL)isSelected{
+    NSMutableDictionary *firstAttributes = [NSMutableDictionary dictionary];
+    NSDictionary *firstAttributeFont = @{NSFontAttributeName:self.title.font};
+    
+    [firstAttributes addEntriesFromDictionary:firstAttributeFont];
+    
+    if (!isSelected) {
+        [firstAttributes addEntriesFromDictionary:@{NSForegroundColorAttributeName:[UIColor colorWithRed:8.0f/255 green:115.0f/255 blue:167.0f/255 alpha:1.0f]}];
+    } else{
+        [firstAttributes addEntriesFromDictionary:@{NSForegroundColorAttributeName:[UIColor blueColor]}];
+    }
+    
+    NSString* completeString = [NSString stringWithFormat:@"%@ ",self.title.text];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:completeString];
+    
+    [attributedString setAttributes:firstAttributes range:[completeString rangeOfString:self.title.text]];
+    self.title.attributedText = attributedString;
+}
 
 - (UIImage *) image:(UIImage *)image WithTintColor:(UIColor *)tintColor {
     //We want to keep alpha, set opaque to NO; Use 0.0f for scale to use the scale factor of the device’s main screen.
