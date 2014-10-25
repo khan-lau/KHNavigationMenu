@@ -26,6 +26,16 @@ Support costom pop viewcontroller
 
 
 
+# Change Log
+
+v1.0.1 
+
+1. 修复 presentingViewController 为nil 或 presentingViewController.edgesForExtendedLayout != UIRectEdgeNone 状况导致的异常
+
+2. 提高 GridMenuVcl selectedBackgroundView的渲染效率
+
+
+
 #demo pic
 ![file-list](https://github.com/khan-lau/KHNavigationMenu/blob/master/resource/demo.gif)
 
