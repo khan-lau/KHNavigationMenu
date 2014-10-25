@@ -15,6 +15,9 @@
 
 @property(nonatomic, strong) UIImageView *icon;
 @property(nonatomic, strong) UILabel * title;
+@property(nonatomic, strong) UIView *selectedView;
+
+- (void) drawSelectedView ;
 
 @end
 
@@ -32,6 +35,22 @@
     return self;
 }
 
+- (void) drawSelectedView {
+    if (_selectedView == nil) {
+        _selectedView = [[UIView alloc] initWithFrame:CGRectZero];
+        UIImageView * img = [[UIImageView alloc] initWithFrame:self.icon.frame];
+//        img.image =  [self image:self.icon.image WithTintColor:[UIColor colorWithRed:150.0f/255 green:150.0f/255 blue:150.0f/255 alpha:1.0f]];
+        img.image =  [self image:self.icon.image WithTintColor:[UIColor blueColor]];
+        [_selectedView addSubview:img];
+        
+        [_selectedView setBackgroundColor:[UIColor clearColor]];
+        [_selectedView.layer setMasksToBounds:YES];
+        [_selectedView.layer setCornerRadius:3.0];
+        [_selectedView.layer setBorderColor:[[UIColor colorWithRed:217.0f/255 green:217.0f/255 blue:217.0f/255 alpha:1.0f] CGColor]];//边框颜色
+    }
+    self.selectedBackgroundView = _selectedView;
+}
+
 
 
 - (void) initView {
@@ -44,6 +63,24 @@
     
     [self.contentView addSubview:self.icon];
     [self.contentView addSubview:self.title];
+}
+
+
+
+- (UIImage *) image:(UIImage *)image WithTintColor:(UIColor *)tintColor {
+    //We want to keep alpha, set opaque to NO; Use 0.0f for scale to use the scale factor of the device’s main screen.
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0f);
+    [tintColor setFill];
+    CGRect bounds = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIRectFill(bounds);
+    
+    //Draw the tinted image in context
+    [image drawInRect:bounds blendMode:kCGBlendModeDestinationIn alpha:1.0f];
+    
+    UIImage *tintedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return tintedImage;
 }
 @end
 
@@ -166,7 +203,7 @@ static NSString * const reuseIdentifier = @"MenuCollectionCell";
     [cell.icon setImage: [UIImage imageNamed:item.iconName]];
     [cell.title setText: item.content];
     
-    [self setCellSelectedBackground:cell];
+    [cell drawSelectedView];
     return cell;
 }
 
@@ -204,9 +241,6 @@ static NSString * const reuseIdentifier = @"MenuCollectionCell";
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(10, 10, 10, 10);
 }
-
-
-
 
 
 
@@ -254,35 +288,7 @@ static NSString * const reuseIdentifier = @"MenuCollectionCell";
 }
 
 
-- (void) setCellSelectedBackground:(MenuCell *) cell {
-    UIView *selectView = [[UIView alloc] initWithFrame:CGRectZero];
-    UIImageView * img = [[UIImageView alloc] initWithFrame:cell.icon.frame];
-    img.image =  [self image:cell.icon.image WithTintColor:[UIColor blueColor]];
-    [selectView addSubview:img];
-    
-    [selectView setBackgroundColor:[UIColor clearColor]];
-    [selectView.layer setMasksToBounds:YES];
-    [selectView.layer setCornerRadius:3.0];
-    [selectView.layer setBorderColor:[[UIColor colorWithRed:217.0f/255 green:217.0f/255 blue:217.0f/255 alpha:1.0f] CGColor]];//边框颜色
-    selectView.alpha = 0.3f;
-    cell.selectedBackgroundView = selectView;
-}
 
-- (UIImage *) image:(UIImage *)image WithTintColor:(UIColor *)tintColor {
-    //We want to keep alpha, set opaque to NO; Use 0.0f for scale to use the scale factor of the device’s main screen.
-    UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0f);
-    [tintColor setFill];
-    CGRect bounds = CGRectMake(0, 0, image.size.width, image.size.height);
-    UIRectFill(bounds);
-    
-    //Draw the tinted image in context
-    [image drawInRect:bounds blendMode:kCGBlendModeDestinationIn alpha:1.0f];
-    
-    UIImage *tintedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return tintedImage;
-}
 
 @end
 
