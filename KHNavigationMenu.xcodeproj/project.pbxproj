@@ -471,6 +471,7 @@
 				6C82155319FA53C6006B7F8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6C82155419FA53C6006B7F8B /* Build configuration list for PBXNativeTarget "KHNavigationMenuTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +480,7 @@
 				6C82155619FA53C6006B7F8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
