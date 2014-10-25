@@ -108,7 +108,7 @@
 
 @implementation GridMenuVcl
 
-static NSString * const reuseIdentifier = @"MenuCollectionCell";
+static NSString * const reuseIdentifier = @"GridMenuCollectionCell";
 
 
 - (id) init {
